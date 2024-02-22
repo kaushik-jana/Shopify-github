@@ -10053,4 +10053,8 @@ textarea.form-control {
 .card__content {
     padding: 0 15px !important;
 }
+#statuscode {
+    color: red;
+    padding: 10px 0;
+}
 
