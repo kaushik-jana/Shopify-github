@@ -1,1 +1,38 @@
-{"name":"t:sections.header.name","type":"header","sections":{"header":{"type":"header","settings":{"logo_position":"middle-left","menu":"main-menu","menu_type_desktop":"dropdown","sticky_header_type":"on-scroll-up","show_line_separator":true,"color_scheme":"background-1","menu_color_scheme":"background-1","enable_country_selector":true,"enable_language_selector":true,"mobile_logo_position":"center","margin_bottom":0,"padding_top":20,"padding_bottom":20}},"index_y7AUby":{"type":"index","disabled":true,"settings":{"headermenu":"main-menu","text_email":"youremail@email.com","text_bus":"3-5 Business days delivery &amp; Free Returns","Phone_number":1235235598}}},"order":["header","index_y7AUby"]}
+{
+  "name": "t:sections.header.name",
+  "type": "header",
+  "sections": {
+    "header": {
+      "type": "header",
+      "disabled": true,
+      "settings": {
+        "logo_position": "middle-left",
+        "menu": "main-menu",
+        "menu_type_desktop": "dropdown",
+        "sticky_header_type": "on-scroll-up",
+        "show_line_separator": true,
+        "color_scheme": "background-1",
+        "menu_color_scheme": "background-1",
+        "enable_country_selector": true,
+        "enable_language_selector": true,
+        "mobile_logo_position": "center",
+        "margin_bottom": 0,
+        "padding_top": 20,
+        "padding_bottom": 20
+      }
+    },
+    "index_y7AUby": {
+      "type": "index",
+      "settings": {
+        "headermenu": "main-menu",
+        "text_email": "youremail@email.com",
+        "text_bus": "6-7 Business days delivery &amp; Free Returns",
+        "Phone_number": 1235235598
+      }
+    }
+  },
+  "order": [
+    "header",
+    "index_y7AUby"
+  ]
+}
