@@ -10042,4 +10042,7 @@ textarea.form-control {
     padding: 20px 20px;
   display:block;
 }
+.bottom-area i.ion-ios-cart {
+    font-size: 24px;
+}
 
