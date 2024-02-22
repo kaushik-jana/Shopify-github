@@ -10050,4 +10050,7 @@ textarea.form-control {
   flex-wrap: inherit;
     justify-content: inherit;
 }
+.card__content {
+    padding: 0 15px !important;
+}
 
