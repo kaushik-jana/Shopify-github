@@ -1,0 +1,122 @@
+<section class="ftco-section ftco-cart">
+<div class="container">
+<div class="row">
+<div class="col-md-12 ftco-animate">
+<div class="cart-list">
+<table class="table">
+<thead class="thead-primary">
+<tr class="text-center">
+<th>&nbsp;</th>
+<th>&nbsp;</th>
+<th>Product name</th>
+<th>Price</th>
+<th>Quantity</th>
+<th>Total</th>
+</tr>
+</thead>
+<tbody>
+{% for item in cart.items %}
+
+<tr class="text-center">
+<td class="product-remove"><a href="javascript:void(0)" variant_value="{{ item.id }}" class="remove-button"><span class="ion-ios-close"></span></a></td>
+
+<td class="image-prod"><div class="img" style="background-image:url({{ item.image |  img_url: 'small' }});"></div></td>
+
+<td class="product-name">
+
+<p>{{ item.title }}</p>
+</td>
+
+<td class="price">{{ item.final_price | money }}</td>
+
+<td class="quantity">
+<div class="input-group mb-3">
+<input type="text" readonly name="quantity" class="quantity form-control input-number" value="{{ item.quantity }}" min="1" max="100">
+</div>
+</td>
+
+<td class="total">{{ item.final_line_price | money }}</td>
+</tr><!-- END TR-->
+
+{% endfor %}
+
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="row justify-content-end">
+<div class="col-lg-4 mt-5 cart-wrap ftco-animate">
+<div class="cart-total mb-3">
+<h3>Cart Totals</h3>
+<p class="d-flex">
+<span>Subtotal</span>
+<span>{{ cart.items_subtotal_price | money}}</span>
+</p>
+<p class="d-flex">
+<span>Delivery</span>
+<span>$0.00</span>
+</p>
+<!-- <p class="d-flex">
+<span>Discount</span>
+<span>$3.00</span>
+</p> -->
+<hr>
+<p class="d-flex total-price">
+<span>Total</span>
+<span>{{ cart.total_price | money }}</span>
+</p>
+</div>
+<p><a href="/checkout" class="btn btn-primary py-3 px-4">Proceed to Checkout</a></p>
+</div>
+</div>
+</div>
+</section>
+
+ <script src="{{ 'remove.js' | asset_url }}"></script>  
+
+ <script>
+  
+  window.onload = function(){
+    let cartContainsFreeProduct = false;
+    let cartContainsQualifyingProduct = false;
+ 
+    const qualifyingProductVariantId = 44981725167780; 
+    const freeProductVariantId = 45079343988900;
+
+    {% for item in cart.items %}
+      if({{ item.id }} === freeProductVariantId){
+        cartContainsFreeProduct = true; 
+        
+      }
+      if({{ item.id }} === qualifyingProductVariantId){
+         cartContainsQualifyingProduct = true;
+        
+      }
+    {% endfor %}
+    console.log(cartContainsFreeProduct);
+    console.log(cartContainsQualifyingProduct);
+    
+//  If cart contains qualifying product and doesn't already contain free product, add qty 1 of free product
+    if(cartContainsQualifyingProduct && cartContainsFreeProduct === false) {
+        
+      jQuery.post('cart/add.js', { quantity: 1, id: freeProductVariantId })
+      .done(function() {window.location.reload()})    
+        
+     } 
+  }
+  
+</script>
+
+ 
+{% schema %}
+  {
+    "name": "cart-total",
+    "settings": [],
+               "presets": [ 
+    {
+      "name": "cart-total"
+    }
+  ]
+  }
+{% endschema %}

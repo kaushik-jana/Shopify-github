@@ -1,0 +1,96 @@
+<div class="py-1 bg-primary">
+    	<div class="container">
+    		<div class="row no-gutters d-flex align-items-start align-items-center px-md-0">
+	    		<div class="col-lg-12 d-block">
+		    		<div class="row d-flex">
+		    			<div class="col-md pr-4 d-flex topper align-items-center">
+					    	<div class="icon mr-2 d-flex justify-content-center align-items-center"><span class="icon-phone2"></span></div>
+						    <span class="text">+ {{ section.settings.Phone_number }}</span>
+					    </div>
+					    <div class="col-md pr-4 d-flex topper align-items-center">
+					    	<div class="icon mr-2 d-flex justify-content-center align-items-center"><span class="icon-paper-plane"></span></div>
+						    <span class="text">{{ section.settings.text_email }}</span>
+					    </div>
+					    <div class="col-md-5 pr-4 d-flex topper align-items-center text-lg-right">
+						    <span class="text">{{ section.settings.text_bus }}</span>
+					    </div>
+				    </div>
+			    </div>
+		    </div>
+		  </div>
+    </div>
+
+
+    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+	    <div class="container">
+	      <a class="navbar-brand" href="/">Vegefoods</a>
+	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+	        <span class="oi oi-menu"></span> Menu
+	      </button>
+
+	      <div class="collapse navbar-collapse" id="ftco-nav">
+	        <ul class="navbar-nav ml-auto">
+              <!-- Main menu -->
+{% for link in linklists[section.settings.headermenu].links -%}
+
+               <li class="nav-item dropdown">
+           <a class="nav-link {% if link.levels > 0 %} dropdown-toggle {% endif %}" href="{{ link.url }}" 
+             {% if link.levels > 0 %}
+             id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"{% endif %}>{{link.title}}</a>
+              {% if link.levels > 0 %}
+              <div class="dropdown-menu" aria-labelledby="dropdown04">
+                 {% for sub_link in link.links %}
+              	<a class="dropdown-item" href="{{ sub_link.url }}">{{ sub_link.title }}</a>
+                {% endfor %}
+              	<!-- <a class="dropdown-item" href="wishlist.html">Wishlist</a>
+                <a class="dropdown-item" href="product-single.html">Single Product</a>
+                <a class="dropdown-item" href="cart.html">Cart</a>
+                <a class="dropdown-item" href="checkout.html">Checkout</a> -->
+              </div>
+                {% endif %}
+            </li>
+              
+{%- endfor %}
+	          <!-- <li class="nav-item cta cta-colored"><a href="/cart" class="nav-link"><span class="icon-shopping_cart"></span> <span id="cartcount">{{ cart.item_count }}</span> </a></li> -->
+
+	        </ul>
+	      </div>
+	    </div>
+	  </nav>
+
+    {% schema %}
+{
+  "name": "Header Section index",
+  "settings": [
+    {
+  "type": "link_list",
+  "id": "headermenu",
+  "label": "Menu"
+},   
+    {
+  "type": "text",
+  "id": "text_email",
+  "label": "Heading",
+  "default": "text_email"
+},
+    {
+  "type": "text",
+  "id": "text_bus",
+  "label": "Heading",
+  "default": "text_bus"
+},
+{
+  "type": "number",
+  "id": "Phone_number",
+  "label": "number",
+  "default": 20
+}
+  
+  ],
+  "presets": [ 
+    {
+      "name": "Header Section index"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,9 @@
+
+{%- layout none -%} {
+    "smeCartData": {{cart | json}}
+    {%- if cart -%}
+    {%- for item in cart.items -%}
+    ,"{{item.id}}": {{item.product | json}}
+    {% endfor %}
+    {%- endif -%}
+}
