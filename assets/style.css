@@ -10046,3 +10046,8 @@ textarea.form-control {
     font-size: 24px;
 }
 
+.pagination-wrapper .pagination__list{
+  flex-wrap: inherit;
+    justify-content: inherit;
+}
+
