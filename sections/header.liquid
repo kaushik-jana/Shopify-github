@@ -309,11 +309,14 @@
           </span>
         </a>
       {%- endif -%}
-            {%- if customer.id == empty -%}
+      
+            {%- if customer.id -%}
        {{ 'Log in' | customer_login_link }}
       {% else %}
         {{ 'Log out' | customer_logout_link }}
       {%- endif -%}
+
+      
 
       {%- for block in section.blocks -%}
         {%- case block.type -%}
