@@ -93,3 +93,43 @@ $('.singlepagecart').click(function() {
         });
 
 });
+
+///////buy now//////////
+
+
+$('.Buy').click(function() {
+    let variant = $('[name=id]').val();
+    let quantity = $('[name=quantity]').val();
+    console.log(variant);
+
+    let formData = {
+        'items': [{
+            'id': variant,
+            'quantity': quantity
+        }]
+    };
+    fetch(window.Shopify.routes.root + 'cart/add.js', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(formData)
+        })
+        .then(response => {
+            //console.log(response);
+            return response.json();
+        })
+
+        .then(response => {
+
+        window.location.href = "/checkout";
+        })
+
+        .catch((error) => {
+            console.error('Error:', error);
+        });
+
+});
+
+
+
