@@ -1,0 +1,6 @@
+<div><h1>{{ section.settings.faqtxt }}</h1></div>
+
+{% for block in section.blocks %}
+<div><h2>{{ block.settings.question }}</h2></div>
+<div><p>{{ block.settings.answer }}</p></div>
+{% endfor %}
