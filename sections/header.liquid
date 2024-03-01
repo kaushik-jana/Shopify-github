@@ -335,7 +335,13 @@
           </div>
         {%- endif -%}
       </a>
-      {{ customer.id }} hiiiiiii
+
+      {%- if customer.id == empty -%}
+       {{ 'Log in' | customer_login_link }}
+      {% else %}}
+        {{ 'Log out' | customer_logout_link }}
+      {%- endif -%}
+
 
     </div>
   </header>
