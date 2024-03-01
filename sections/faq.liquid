@@ -1,6 +1,38 @@
+{% comment %} {% include "faq-text" %} {% endcomment %}
+
 {% schema %}
   {
-    "name": "Section name",
-    "settings": []
+    "name": "FaQ",
+    "settings": [
+      {
+          "type":"text",
+          "label":"Frequently asked Question",
+          "id":"faqtxt"
+      }
+    ],
+    "max_blocks": 4,
+    "blocks":[
+         {
+           "name":"Q&A",
+           "type":"question",
+           "settings": [
+                  {
+                      "type":"text",
+                      "label":"Question",
+                      "id":"question"
+                  },
+                 {
+                      "type":"text",
+                      "label":"Answers",
+                      "id":"answer"
+                  }         
+             ]
+         }
+    ],
+    "presets": [
+      {
+        "name": "FAQ"
+      }
+    ]
   }
 {% endschema %}
