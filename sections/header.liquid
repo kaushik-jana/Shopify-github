@@ -24,7 +24,6 @@
 <noscript>{{ 'component-menu-drawer.css' | asset_url | stylesheet_tag }}</noscript>
 <noscript>{{ 'component-cart-notification.css' | asset_url | stylesheet_tag }}</noscript>
 <noscript>{{ 'component-cart-items.css' | asset_url | stylesheet_tag }}</noscript>
-{{ shop | login_button: action: 'follow' }}
 
 <style>
   header-drawer {
@@ -336,6 +335,8 @@
           </div>
         {%- endif -%}
       </a>
+      {{ shop | login_button: action: 'follow' }}
+
     </div>
   </header>
 </{% if section.settings.sticky_header_type != 'none' %}sticky-header{% else %}div{% endif %}>
