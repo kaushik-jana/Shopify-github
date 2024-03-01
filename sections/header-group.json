@@ -4,6 +4,7 @@
   "sections": {
     "header": {
       "type": "header",
+      "disabled": true,
       "settings": {
         "logo_position": "middle-left",
         "menu": "main-menu",
@@ -22,7 +23,6 @@
     },
     "index_y7AUby": {
       "type": "index",
-      "disabled": true,
       "settings": {
         "headermenu": "main-menu",
         "text_email": "youremail@email.com",
