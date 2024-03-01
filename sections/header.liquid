@@ -311,9 +311,10 @@
       {%- endif -%}
       
             {%- if customer.id -%}
-       {{ 'Log in' | customer_login_link }}
+              {{ 'Log out' | customer_logout_link }}
+       
       {% else %}
-        {{ 'Log out' | customer_logout_link }}
+              {{ 'Log in' | customer_login_link }}
       {%- endif -%}
 
       
