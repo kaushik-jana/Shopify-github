@@ -157,9 +157,8 @@
         </div>
       </div>
     </section> -->
-<script src="{{ 'adtcart.js' | asset_url }}"></script>   
 
-<script>
+    <script>
 
   $('.Buy1').click(function() {
     let variant = $('[name=id]').val();
@@ -189,6 +188,9 @@
 });
 
 </script>
+<script src="{{ 'adtcart.js' | asset_url }}"></script>   
+
+
 <script>
   $('.qtybox .btnqty').on('click', function(){
   var qty = parseInt($(this).parent('.qtybox').find('.quantity-input').val());
