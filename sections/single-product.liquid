@@ -161,10 +161,8 @@
 <script>
 document.getElementById('custom-buy-now-btn').addEventListener('click', function() {
     var productId = '{{ product.id }}'; // Replace this with the Liquid variable to get the product ID
+    var variantId = 'YOUR_PRODUCT_VARIANT_ID'; // Replace this with the variant ID or handle of the specific product
     var quantity = 1; // Replace this with the desired quantity
-
-    // Get the selected variant ID dynamically
-    var variantId = document.querySelector('input[name="id"]:checked').value;
 
     var checkoutUrl = '/checkout';
     checkoutUrl += '?add=' + encodeURIComponent(variantId);
