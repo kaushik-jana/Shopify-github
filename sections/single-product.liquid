@@ -163,11 +163,11 @@ document.getElementById('custom-buy-now-btn').addEventListener('click', function
     var productId = '{{ product.id }}'; // Replace with the actual product ID
 
     var checkoutUrl = '/checkout';
-    checkoutUrl += '?add=' + encodeURIComponent(productId);
 
     window.location.href = checkoutUrl;
 });
 </script>
+
 
 
 <script src="{{ 'adtcart.js' | asset_url }}"></script>   
