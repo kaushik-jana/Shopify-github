@@ -82,8 +82,7 @@
 <div>
   <div id="statuscode"></div>
 <button type="button" class="singlepagecart" accesskeyname="add">Add to cart</button>
-<!-- <button type="button" class="Buy" accesskeyname="Buy">Buy It Now</button>   -->
-  <button id="custom-buy-now-btn">Buy Now</button>
+<button type="button" class="Buy" accesskeyname="Buy">Buy It Now</button>
 </div>
 </form>
           	<!-- <p><a href="/cart" variant_value="{{ product.selected_or_first_available_variant.id }}" class="btn btn-black py-3 px-5 add-to-cart-button">Add to Cart</a></p> -->
@@ -157,19 +156,6 @@
         </div>
       </div>
     </section> -->
-
-<script>
-document.getElementById('custom-buy-now-btn').addEventListener('click', function() {
-    var productId = '{{ product.id }}'; // Replace with the actual product ID
-
-    var checkoutUrl = '/checkout';
-
-    window.location.href = checkoutUrl;
-});
-</script>
-
-
-
 <script src="{{ 'adtcart.js' | asset_url }}"></script>   
 <script>
   $('.qtybox .btnqty').on('click', function(){
