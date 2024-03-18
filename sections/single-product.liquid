@@ -161,6 +161,8 @@
     </section> -->
 
 
+
+
 <script>
   $(document).ready(function() {
     $('.buy-now-btn').click(function() {
@@ -179,14 +181,24 @@
         }]
       };
 
-      // Send a POST request to add the variant to the cart
-      fetch('/cart/add.js', {
+      // Clear the existing cart
+      fetch('/cart/clear.js', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
           'X-Requested-With': 'XMLHttpRequest'
-        },
-        body: JSON.stringify(formData)
+        }
+      })
+      .then(response => {
+        // Send a POST request to add the variant to the cart
+        return fetch('/cart/add.js', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'X-Requested-With': 'XMLHttpRequest'
+          },
+          body: JSON.stringify(formData)
+        });
       })
       .then(response => response.json())
       .then(data => {
@@ -199,9 +211,6 @@
     });
   });
 </script>
-
-
-    </script>
 
 <script src="{{ 'adtcart.js' | asset_url }}"></script>   
 <script>
