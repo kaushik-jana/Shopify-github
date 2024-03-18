@@ -160,17 +160,22 @@
 
 <script>
 document.getElementById('custom-buy-now-btn').addEventListener('click', function() {
-    var productId = '{{ product.id }}'; // Replace this with the Liquid variable to get the product ID
-    var variantId = 'YOUR_PRODUCT_VARIANT_ID'; // Replace this with the variant ID or handle of the specific product
-    var quantity = 1; // Replace this with the desired quantity
+    // Get the selected variant ID
+    var variantId = document.querySelector('#product-form-8374048391332 select[name="id"]').value;
 
+    // Get the desired quantity
+    var quantity = 1; // You can adjust this to dynamically retrieve the quantity if needed
+
+    // Construct the checkout URL
     var checkoutUrl = '/checkout';
     checkoutUrl += '?add=' + encodeURIComponent(variantId);
     checkoutUrl += '&quantity=' + encodeURIComponent(quantity);
 
+    // Redirect to the checkout page
     window.location.href = checkoutUrl;
 });
 </script>
+
 >
 
 <script src="{{ 'adtcart.js' | asset_url }}"></script>   
