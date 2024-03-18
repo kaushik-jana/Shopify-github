@@ -84,7 +84,14 @@
 <button type="button" class="singlepagecart" accesskeyname="add">Add to cart</button>
 <button type="button" class="Buy" accesskeyname="Buy">Buy It Now</button>
 
-
+<button
+                  id="ProductPopup-{{ block.id }}"
+                  class="product-popup-modal__button link"
+                  type="button"
+                  aria-haspopup="dialog"
+                >
+                  {{ block.settings.text | default: block.settings.page.title }}
+                </button>
 
 </div>                  
 </form>
