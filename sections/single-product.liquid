@@ -160,9 +160,6 @@
       </div>
     </section> -->
 
-
-
-
 <script>
   $(document).ready(function() {
     $('.buy-now-btn').click(function() {
@@ -181,28 +178,35 @@
         }]
       };
 
-      // Clear the existing cart
-      fetch('/cart/clear.js', {
-        method: 'POST',
+      // Fetch the current cart
+      fetch('/cart.js', {
+        method: 'GET',
         headers: {
           'Content-Type': 'application/json',
           'X-Requested-With': 'XMLHttpRequest'
         }
       })
-      .then(response => {
-        // Send a POST request to add the variant to the cart
-        return fetch('/cart/add.js', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'X-Requested-With': 'XMLHttpRequest'
-          },
-          body: JSON.stringify(formData)
-        });
+      .then(response => response.json())
+      .then(cartData => {
+        // Check if the cart is empty
+        if (cartData.item_count === 0) {
+          // If the cart is empty, directly add the new product variant to the cart
+          return fetch('/cart/add.js', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'X-Requested-With': 'XMLHttpRequest'
+            },
+            body: JSON.stringify(formData)
+          });
+        } else {
+          // If the cart is not empty, redirect to the checkout page
+          window.location.href = checkoutUrl;
+        }
       })
       .then(response => response.json())
       .then(data => {
-        // Redirect to the checkout page
+        // Redirect to the checkout page after adding the product variant to the cart
         window.location.href = checkoutUrl;
       })
       .catch(error => {
@@ -211,6 +215,9 @@
     });
   });
 </script>
+
+
+
 
 <script src="{{ 'adtcart.js' | asset_url }}"></script>   
 <script>
