@@ -204,21 +204,22 @@
 
           // Wait for all removal requests to complete
           return Promise.all(removeItems);
-        } else {
-          // If the cart is empty, directly add the new product variant to the cart
-          return fetch('/cart/add.js', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-              'X-Requested-With': 'XMLHttpRequest',
-              'Cache-Control': 'no-cache' // Add cache control header to prevent caching
-            },
-            body: JSON.stringify(formData)
-          });
         }
       })
       .then(() => {
-        // After removing existing items or adding the new item, redirect to the checkout page
+        // After all removal requests are completed or if the cart is empty, add the new product variant to the cart
+        return fetch('/cart/add.js', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'X-Requested-With': 'XMLHttpRequest',
+            'Cache-Control': 'no-cache' // Add cache control header to prevent caching
+          },
+          body: JSON.stringify(formData)
+        });
+      })
+      .then(() => {
+        // After adding the new item or if the cart is empty, redirect to the checkout page
         window.location.href = checkoutUrl;
       })
       .catch(error => {
@@ -227,6 +228,7 @@
     });
   });
 </script>
+
 
 
 
