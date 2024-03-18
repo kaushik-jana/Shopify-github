@@ -85,7 +85,6 @@
 <button type="button" class="Buy" accesskeyname="Buy">Buy It Now</button>
  
 </div> 
-<button class="buy-now-btn" data-product-id="{{ product.id }}" data-variant-id="{{ variant.id }}">Buy Now</button>
 
 </form>
           	<!-- <p><a href="/cart" variant_value="{{ product.selected_or_first_available_variant.id }}" class="btn btn-black py-3 px-5 add-to-cart-button">Add to Cart</a></p> -->
@@ -159,79 +158,6 @@
         </div>
       </div>
     </section> -->
-
-<script>
-  $(document).ready(function() {
-    $('.buy-now-btn').click(function() {
-      var productId = $(this).data('product-id');
-      var variantId = $(this).data('variant-id');
-      var quantity = 1; // Set the default quantity to 1
-
-      // Construct the checkout URL with the product and variant information
-      var checkoutUrl = '/checkout';
-
-      // Create a form data object with the selected variant and quantity
-      var formData = {
-        items: [{
-          id: variantId,
-          quantity: quantity
-        }]
-      };
-
-      // Fetch the current cart data with cache control headers
-      fetch('/cart.json', {
-        cache: 'no-cache' // Add cache control header to prevent caching
-      })
-      .then(response => response.json())
-      .then(cartData => {
-        // Check if there are existing items in the cart
-        if (cartData.items.length > 0) {
-          // If there are existing items, remove them from the cart
-          var removeItems = cartData.items.map(item => {
-            return fetch('/cart/change.js', {
-              method: 'POST',
-              headers: {
-                'Content-Type': 'application/json',
-                'X-Requested-With': 'XMLHttpRequest',
-                'Cache-Control': 'no-cache' // Add cache control header to prevent caching
-              },
-              body: JSON.stringify({
-                id: item.key,
-                quantity: 0 // Setting quantity to 0 removes the item from the cart
-              })
-            });
-          });
-
-          // Wait for all removal requests to complete
-          return Promise.all(removeItems);
-        }
-      })
-      .then(() => {
-        // After all removal requests are completed or if the cart is empty, add the new product variant to the cart
-        return fetch('/cart/add.js', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'X-Requested-With': 'XMLHttpRequest',
-            'Cache-Control': 'no-cache' // Add cache control header to prevent caching
-          },
-          body: JSON.stringify(formData)
-        });
-      })
-      .then(() => {
-        // After adding the new item or if the cart is empty, redirect to the checkout page
-        window.location.href = checkoutUrl;
-      })
-      .catch(error => {
-        console.error('Error:', error);
-      });
-    });
-  });
-</script>
-
-
-
-
 
 <script src="{{ 'adtcart.js' | asset_url }}"></script>   
 <script>
