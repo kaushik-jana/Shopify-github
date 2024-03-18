@@ -178,28 +178,43 @@
         }]
       };
 
-      // Fetch the current cart
-      fetch('/cart/clear.js', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'X-Requested-With': 'XMLHttpRequest'
+      // Fetch the current cart data
+      fetch('/cart.json')
+      .then(response => response.json())
+      .then(cartData => {
+        // Check if there are existing items in the cart
+        if (cartData.items.length > 0) {
+          // If there are existing items, remove them from the cart
+          var removeItems = cartData.items.map(item => {
+            return fetch('/cart/change.js', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+                'X-Requested-With': 'XMLHttpRequest'
+              },
+              body: JSON.stringify({
+                id: item.key,
+                quantity: 0 // Setting quantity to 0 removes the item from the cart
+              })
+            });
+          });
+
+          // Wait for all removal requests to complete
+          return Promise.all(removeItems);
+        } else {
+          // If the cart is empty, directly add the new product variant to the cart
+          return fetch('/cart/add.js', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'X-Requested-With': 'XMLHttpRequest'
+            },
+            body: JSON.stringify(formData)
+          });
         }
       })
-      .then(response => {
-        // Once the cart is cleared, add the new product variant to the cart
-        return fetch('/cart/add.js', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'X-Requested-With': 'XMLHttpRequest'
-          },
-          body: JSON.stringify(formData)
-        });
-      })
-      .then(response => response.json())
-      .then(data => {
-        // Redirect to the checkout page after adding the product variant to the cart
+      .then(() => {
+        // After removing existing items or adding the new item, redirect to the checkout page
         window.location.href = checkoutUrl;
       })
       .catch(error => {
