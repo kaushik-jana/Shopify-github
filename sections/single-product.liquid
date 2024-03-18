@@ -161,9 +161,7 @@
     </section> -->
 
 
-    <script>
-
-      <script>
+<script>
   $(document).ready(function() {
     $('.buy-now-btn').click(function() {
       var productId = $(this).data('product-id');
@@ -171,13 +169,37 @@
       var quantity = 1; // Set the default quantity to 1
 
       // Construct the checkout URL with the product and variant information
-      var checkoutUrl = '/checkout/' + productId + '?variant=' + variantId + '&quantity=' + quantity;
-      
-      // Redirect the user to the checkout page
-      window.location.href = checkoutUrl;
+      var checkoutUrl = '/checkout';
+
+      // Create a form data object with the selected variant and quantity
+      var formData = {
+        items: [{
+          id: variantId,
+          quantity: quantity
+        }]
+      };
+
+      // Send a POST request to add the variant to the cart
+      fetch('/cart/add.js', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-Requested-With': 'XMLHttpRequest'
+        },
+        body: JSON.stringify(formData)
+      })
+      .then(response => response.json())
+      .then(data => {
+        // Redirect to the checkout page
+        window.location.href = checkoutUrl;
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
     });
   });
 </script>
+
 
     </script>
 
