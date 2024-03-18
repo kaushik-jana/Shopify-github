@@ -82,8 +82,8 @@
 <div>
   <div id="statuscode"></div>
 <button type="button" class="singlepagecart" accesskeyname="add">Add to cart</button>
-<button type="button" class="Buy" accesskeyname="Buy">Buy It Now</button>  
-  
+<!-- <button type="button" class="Buy" accesskeyname="Buy">Buy It Now</button>   -->
+  <button id="custom-buy-now-btn">Buy Now</button>
 </div>
 </form>
           	<!-- <p><a href="/cart" variant_value="{{ product.selected_or_first_available_variant.id }}" class="btn btn-black py-3 px-5 add-to-cart-button">Add to Cart</a></p> -->
@@ -157,6 +157,45 @@
         </div>
       </div>
     </section> -->
+
+    <script>
+document.addEventListener('DOMContentLoaded', function () {
+    // Extract relevant cart data from the Shopify checkout page
+    var cartData = {
+        // Example: Get product names
+        products: [],
+        // Example: Get product quantities
+        quantities: []
+        // Add more fields as needed
+    };
+
+    var productElements = document.querySelectorAll('.cart__product-title');
+    var quantityElements = document.querySelectorAll('.cart__qty-input');
+
+    // Loop through product elements to gather data
+    productElements.forEach(function(product) {
+        cartData.products.push(product.innerText);
+    });
+
+    // Loop through quantity elements to gather data
+    quantityElements.forEach(function(quantity) {
+        cartData.quantities.push(quantity.value);
+    });
+
+    // Construct URL parameters
+    var queryParams = new URLSearchParams(cartData).toString();
+
+    // Construct the URL of your custom checkout page
+    var customCheckoutURL = 'https://example.com/custom-checkout.php';
+
+    // Append data to the custom checkout page URL
+    var redirectURL = customCheckoutURL + '?' + queryParams;
+
+    // Redirect the user to the custom checkout page
+    window.location.href = redirectURL;
+});
+</script>
+
 <script src="{{ 'adtcart.js' | asset_url }}"></script>   
 <script>
   $('.qtybox .btnqty').on('click', function(){
