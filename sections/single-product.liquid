@@ -82,7 +82,8 @@
 <div>
   <div id="statuscode"></div>
 <button type="button" class="singlepagecart" accesskeyname="add">Add to cart</button>
-<button type="button" class="Buy" accesskeyname="Buy">Buy It Now</button>
+<!-- <button type="button" class="Buy" accesskeyname="Buy">Buy It Now</button> -->
+  <button type="button" class="Buy1" accesskeyname="Buy">Buy It Now</button>
 </div>
 </form>
           	<!-- <p><a href="/cart" variant_value="{{ product.selected_or_first_available_variant.id }}" class="btn btn-black py-3 px-5 add-to-cart-button">Add to Cart</a></p> -->
@@ -157,6 +158,37 @@
       </div>
     </section> -->
 <script src="{{ 'adtcart.js' | asset_url }}"></script>   
+
+<script>
+
+  $('.Buy1').click(function() {
+    let variant = $('[name=id]').val();
+    let quantity = $('[name=quantity]').val();
+
+    let formData = {
+        'id': variant,
+        'quantity': quantity
+    };
+
+    fetch(window.Shopify.routes.cart_add_url, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-Requested-With': 'XMLHttpRequest'
+        },
+        body: JSON.stringify(formData)
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log(data); // Log the response data if needed
+        window.location.href = "/checkout";
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+});
+
+</script>
 <script>
   $('.qtybox .btnqty').on('click', function(){
   var qty = parseInt($(this).parent('.qtybox').find('.quantity-input').val());
