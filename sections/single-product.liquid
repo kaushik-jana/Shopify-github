@@ -160,23 +160,15 @@
 
 <script>
 document.getElementById('custom-buy-now-btn').addEventListener('click', function() {
-    // Get the selected variant ID
-    var variantId = document.querySelector('#product-form-8374048391332 select[name="id"]').value;
+    var productId = '{{ product.id }}'; // Replace with the actual product ID
 
-    // Get the desired quantity
-    var quantity = 1; // You can adjust this to dynamically retrieve the quantity if needed
-
-    // Construct the checkout URL
     var checkoutUrl = '/checkout';
-    checkoutUrl += '?add=' + encodeURIComponent(variantId);
-    checkoutUrl += '&quantity=' + encodeURIComponent(quantity);
+    checkoutUrl += '?add=' + encodeURIComponent(productId);
 
-    // Redirect to the checkout page
     window.location.href = checkoutUrl;
 });
 </script>
 
->
 
 <script src="{{ 'adtcart.js' | asset_url }}"></script>   
 <script>
