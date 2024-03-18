@@ -179,30 +179,23 @@
       };
 
       // Fetch the current cart
-      fetch('/cart.js', {
-        method: 'GET',
+      fetch('/cart/clear.js', {
+        method: 'POST',
         headers: {
           'Content-Type': 'application/json',
           'X-Requested-With': 'XMLHttpRequest'
         }
       })
-      .then(response => response.json())
-      .then(cartData => {
-        // Check if the cart is empty
-        if (cartData.item_count === 0) {
-          // If the cart is empty, directly add the new product variant to the cart
-          return fetch('/cart/add.js', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-              'X-Requested-With': 'XMLHttpRequest'
-            },
-            body: JSON.stringify(formData)
-          });
-        } else {
-          // If the cart is not empty, redirect to the checkout page
-          window.location.href = checkoutUrl;
-        }
+      .then(response => {
+        // Once the cart is cleared, add the new product variant to the cart
+        return fetch('/cart/add.js', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'X-Requested-With': 'XMLHttpRequest'
+          },
+          body: JSON.stringify(formData)
+        });
       })
       .then(response => response.json())
       .then(data => {
