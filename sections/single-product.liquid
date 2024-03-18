@@ -178,8 +178,10 @@
         }]
       };
 
-      // Fetch the current cart data
-      fetch('/cart.json')
+      // Fetch the current cart data with cache control headers
+      fetch('/cart.json', {
+        cache: 'no-cache' // Add cache control header to prevent caching
+      })
       .then(response => response.json())
       .then(cartData => {
         // Check if there are existing items in the cart
@@ -190,7 +192,8 @@
               method: 'POST',
               headers: {
                 'Content-Type': 'application/json',
-                'X-Requested-With': 'XMLHttpRequest'
+                'X-Requested-With': 'XMLHttpRequest',
+                'Cache-Control': 'no-cache' // Add cache control header to prevent caching
               },
               body: JSON.stringify({
                 id: item.key,
@@ -207,7 +210,8 @@
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
-              'X-Requested-With': 'XMLHttpRequest'
+              'X-Requested-With': 'XMLHttpRequest',
+              'Cache-Control': 'no-cache' // Add cache control header to prevent caching
             },
             body: JSON.stringify(formData)
           });
