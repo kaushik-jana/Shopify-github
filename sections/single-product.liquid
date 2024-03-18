@@ -163,13 +163,17 @@ document.getElementById('custom-buy-now-btn').addEventListener('click', function
     var productId = '{{ product.id }}'; // Replace this with the Liquid variable to get the product ID
     var quantity = 1; // Replace this with the desired quantity
 
+    // Get the selected variant ID dynamically
+    var variantId = document.querySelector('input[name="id"]:checked').value;
+
     var checkoutUrl = '/checkout';
-    checkoutUrl += '?add=' + encodeURIComponent(productId);
+    checkoutUrl += '?add=' + encodeURIComponent(variantId);
     checkoutUrl += '&quantity=' + encodeURIComponent(quantity);
 
     window.location.href = checkoutUrl;
 });
 </script>
+>
 
 <script src="{{ 'adtcart.js' | asset_url }}"></script>   
 <script>
