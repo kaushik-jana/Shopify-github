@@ -3,7 +3,7 @@
       $(document).ready(function(){
            
        
-        alert('hii');
+        //alert('hii');
         $(".kaktusc-cart__checkout").hide();
         var unifyCartData = "https://e-commercedemo.myshopify.com/cart.json";
           
