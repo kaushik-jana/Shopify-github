@@ -6,7 +6,7 @@
 
          
        // alert('hii');
-        $(".cart-notification-wrapper page-width").hide();
+        $(".kaktusc-cart__checkout").hide();
         var unifyCartData = "https://e-commercedemo.myshopify.com/cart.json";
           
          $.getJSON(unifyCartData, function(jsonData) {
