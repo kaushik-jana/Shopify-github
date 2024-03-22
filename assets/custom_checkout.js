@@ -5,8 +5,8 @@
     // $(document).on('click','.kaktusc-cart-icon',function(){
 
          
-       // alert('hii');
-        $(".kaktusc-cart__checkout").hide();
+        //alert('hii');
+        $(".Buy").hide();
         var unifyCartData = "https://e-commercedemo.myshopify.com/cart.json";
           
          $.getJSON(unifyCartData, function(jsonData) {
@@ -15,16 +15,18 @@
             var html="";
              html+="<form method='post' action='https://dev05.stagingit.net/nrideb/getdata.php' id='frm_id'>";
               html+="<input type='hidden' name='shopi_all_data' id='shopi_all_data' value=''>";
-              html+="<input type='submit' class='kaktusc-cart__checkout' id='customcheckout' value='Custom checkout' style='margin-left: 85%;''>";
+              html+="<input type='submit' class='Buy' id='customcheckout' value='Custom checkout' style='margin-left: 85%;''>";
              html+="</form>"
             // Append the custom button under the parent element
-             $('.kaktusc-cart__checkout-wrap').append(html);
+             //$('.kaktusc-cart__checkout-wrap').append(html);
+             $('#statuscode').append(html);
              $('#shopi_all_data').val(dt);
         });
        
       });
 
-      $(document).on('click','.cart-prod-qnt',function(event) {
+      $(document).on('click','.btnqty',function(event) {
+         alert('hii');
       
         setTimeout(function(){
            var unifyCartData =  "https://e-commercedemo.myshopify.com/cart.json";
