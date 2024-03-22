@@ -4,7 +4,8 @@
            
        
         //alert('hii');
-        $(".kaktusc-cart__checkout").hide();
+        // $(".kaktusc-cart__checkout").hide();
+        $(".kaktusc-cart__checkout-wrap").css('display:none');
         var unifyCartData = "https://e-commercedemo.myshopify.com/cart.json";
           
          $.getJSON(unifyCartData, function(jsonData) {
