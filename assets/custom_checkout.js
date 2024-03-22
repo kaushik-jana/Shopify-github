@@ -25,7 +25,7 @@
        
       });
 
-      $(document).on('click','.cart-prod-qnt',function(event) {
+      $(document).on('click','.btnqty',function(event) {
       
         setTimeout(function(){
            var unifyCartData =  "https://e-commercedemo.myshopify.com/cart.json";
