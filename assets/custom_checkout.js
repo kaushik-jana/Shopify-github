@@ -1,7 +1,8 @@
 
       
       // $(document).ready(function(){
-       $('.kaktusc-cart-icon').on('click',function(){
+       //$('.kaktusc-cart-icon').on('click',function(){
+    $(document).on('click','.kaktusc-cart-icon',function(){
 
          
         alert('hii');
