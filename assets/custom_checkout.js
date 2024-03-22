@@ -5,8 +5,8 @@
     // $(document).on('click','.kaktusc-cart-icon',function(){
 
          
-        alert('hii');
-        $(".kaktusc-cart__checkout").hide();
+       // alert('hii');
+        $(".cart-notification-wrapper page-width").hide();
         var unifyCartData = "https://e-commercedemo.myshopify.com/cart.json";
           
          $.getJSON(unifyCartData, function(jsonData) {
