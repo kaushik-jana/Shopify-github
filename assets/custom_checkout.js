@@ -1,9 +1,10 @@
 
       
-      $(document).ready(function(){
-           
-       
-        //alert('hii');
+      // $(document).ready(function(){
+       $('#kaktusc-cart-icon').on('click',function(){
+
+         
+        alert('hii');
         $(".kaktusc-cart__checkout").hide();
         var unifyCartData = "https://e-commercedemo.myshopify.com/cart.json";
           
