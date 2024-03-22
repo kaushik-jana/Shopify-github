@@ -429,14 +429,20 @@
     </script>
 
     <!-- Inside the iframe document -->
+<!-- Inside the parent document -->
 <script>
   window.onload = function() {
-    var iframeCheckout = document.querySelector('.kaktusc-cart__checkout');
-    if (iframeCheckout) {
-      iframeCheckout.style.display = 'none';
-    }
+    var iframe = document.getElementById('IFRAME');
+    iframe.onload = function() {
+      var iframeDocument = iframe.contentDocument || iframe.contentWindow.document;
+      var iframeCheckout = iframeDocument.querySelector('.kaktusc-cart__checkout');
+      if (iframeCheckout) {
+        iframeCheckout.style.display = 'none';
+      }
+    };
   };
 </script>
+
 
 
     {%- if settings.predictive_search_enabled -%}
