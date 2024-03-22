@@ -428,6 +428,17 @@
       });
     </script>
 
+    <!-- Inside the iframe document -->
+<script>
+  window.onload = function() {
+    var iframeCheckout = document.querySelector('.kaktusc-cart__checkout');
+    if (iframeCheckout) {
+      iframeCheckout.style.display = 'none';
+    }
+  };
+</script>
+
+
     {%- if settings.predictive_search_enabled -%}
       <script src="{{ 'predictive-search.js' | asset_url }}" defer="defer"></script>
     {%- endif -%}
