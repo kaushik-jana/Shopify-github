@@ -45,18 +45,6 @@
     	</div>
     </section>
 
-    <div class="recommended-products">
-    <h3>Customers Also Bought</h3>
-    {% for product in collections['your-collection-handle'].products %}
-        <div class="product">
-            <a href="{{ product.url }}">
-                <img src="{{ product.featured_image | img_url: 'medium' }}" alt="{{ product.title }}">
-                <p>{{ product.title }}</p>
-            </a>
-        </div>
-    {% endfor %}
-</div>
-
   <script src="{{ 'adtcart.js' | asset_url }}"></script>    
     {% schema %}
 {
