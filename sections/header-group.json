@@ -32,6 +32,7 @@
     },
     "abcd_UhfYN6": {
       "type": "abcd",
+      "disabled": true,
       "settings": {
       }
     }

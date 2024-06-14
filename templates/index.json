@@ -1,1 +1,78 @@
-{"layout":"theme.ka","sections":{"featured_collection":{"type":"featured-collection","disabled":true,"settings":{"title":"Featured products","heading_size":"h2","description":"","show_description":false,"description_style":"body","collection":"all","products_to_show":8,"columns_desktop":4,"full_width":false,"show_view_all":true,"view_all_style":"solid","enable_desktop_slider":false,"color_scheme":"background-1","image_ratio":"adapt","image_shape":"default","show_secondary_image":true,"show_vendor":false,"show_rating":false,"enable_quick_add":false,"columns_mobile":"2","swipe_on_mobile":false,"padding_top":44,"padding_bottom":36}},"view_details_6fcDYt":{"type":"ViewDetails","settings":{"bg_1":"shopify:\/\/shop_images\/banner1_1c9bd046-924b-4347-a0ed-75d5e02e3d0d.jpg","bg_2":"shopify:\/\/shop_images\/banner2_556f807a-ec9c-4c54-88e6-bc630062a6e2.jpg"}},"vegetables_UMmkXW":{"type":"Vegetables","settings":{}},"products_TMYCmT":{"type":"Products","settings":{"Products":"Our Products"}},"deal_YY9qVd":{"type":"Deal","settings":{}},"footer1_kWVQDQ":{"type":"footer1","disabled":true,"settings":{"headermenu":""}}},"order":["featured_collection","view_details_6fcDYt","vegetables_UMmkXW","products_TMYCmT","deal_YY9qVd","footer1_kWVQDQ"]}
+{
+  "layout": "theme.ka",
+  "sections": {
+    "featured_collection": {
+      "type": "featured-collection",
+      "disabled": true,
+      "settings": {
+        "title": "Featured products",
+        "heading_size": "h2",
+        "description": "",
+        "show_description": false,
+        "description_style": "body",
+        "collection": "all",
+        "products_to_show": 8,
+        "columns_desktop": 4,
+        "full_width": false,
+        "show_view_all": true,
+        "view_all_style": "solid",
+        "enable_desktop_slider": false,
+        "color_scheme": "background-1",
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "enable_quick_add": false,
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 44,
+        "padding_bottom": 36
+      }
+    },
+    "view_details_6fcDYt": {
+      "type": "ViewDetails",
+      "settings": {
+        "bg_1": "shopify:\/\/shop_images\/banner1_1c9bd046-924b-4347-a0ed-75d5e02e3d0d.jpg",
+        "bg_2": "shopify:\/\/shop_images\/banner2_556f807a-ec9c-4c54-88e6-bc630062a6e2.jpg"
+      }
+    },
+    "vegetables_UMmkXW": {
+      "type": "Vegetables",
+      "settings": {
+      }
+    },
+    "products_TMYCmT": {
+      "type": "Products",
+      "settings": {
+        "Products": "Our Products"
+      }
+    },
+    "deal_YY9qVd": {
+      "type": "Deal",
+      "settings": {
+      }
+    },
+    "footer1_kWVQDQ": {
+      "type": "footer1",
+      "disabled": true,
+      "settings": {
+        "headermenu": ""
+      }
+    },
+    "abcd_JGgJ6B": {
+      "type": "abcd",
+      "settings": {
+      }
+    }
+  },
+  "order": [
+    "featured_collection",
+    "view_details_6fcDYt",
+    "vegetables_UMmkXW",
+    "products_TMYCmT",
+    "deal_YY9qVd",
+    "footer1_kWVQDQ",
+    "abcd_JGgJ6B"
+  ]
+}
