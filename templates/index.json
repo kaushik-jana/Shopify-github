@@ -62,6 +62,7 @@
     },
     "abcd_JGgJ6B": {
       "type": "abcd",
+      "disabled": true,
       "settings": {
       }
     }
