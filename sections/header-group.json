@@ -29,10 +29,16 @@
         "text_bus": "6-7 Business days delivery &amp; Free Returns",
         "Phone_number": 1235235598
       }
+    },
+    "abcd_UhfYN6": {
+      "type": "abcd",
+      "settings": {
+      }
     }
   },
   "order": [
     "header",
-    "index_y7AUby"
+    "index_y7AUby",
+    "abcd_UhfYN6"
   ]
 }
